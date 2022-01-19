@@ -2,7 +2,7 @@ const start = document.getElementById("start");
 const stop = document.getElementById("stop");
 const video = document.querySelector("video");
 let recorder, stream;
-let options = { mimeType: "video/webm;codecs=h264" };
+let options = { mimeType: "video/webm;codecs=vp9,opus" };
 
 async function startRecording() {
   stream = await navigator.mediaDevices.getDisplayMedia({
