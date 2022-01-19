@@ -2,16 +2,17 @@ const start = document.getElementById("start");
 const stop = document.getElementById("stop");
 const video = document.querySelector("video");
 let recorder, stream;
+let options = { mimeType: "video/webm;codecs=h264" };
 
 async function startRecording() {
   stream = await navigator.mediaDevices.getDisplayMedia({
     video: { mediaSource: "screen" }
   });
-  recorder = new MediaRecorder(stream);
+  recorder = new MediaRecorder(stream, options);
 
   const chunks = [];
-  recorder.ondataavailable = e => chunks.push(e.data);
-  recorder.onstop = e => {
+  recorder.ondataavailable = (e) => chunks.push(e.data);
+  recorder.onstop = (e) => {
     const completeBlob = new Blob(chunks, { type: chunks[0].type });
     video.src = URL.createObjectURL(completeBlob);
   };
