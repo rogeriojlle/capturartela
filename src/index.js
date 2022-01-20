@@ -11,6 +11,12 @@ async function startRecording() {
   recorder = new MediaRecorder(stream, options);
   console.log(recorder);
 
+  document.querySelector("#serial").addEventListener("click", async () => {
+    // Prompt user to select any serial port.
+    const port = await navigator.serial.requestPort();
+    console.log(port);
+  });
+
   const chunks = [];
   recorder.ondataavailable = (e) => chunks.push(e.data);
   recorder.onstop = (e) => {
