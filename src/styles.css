@@ -13,4 +13,5 @@ video {
   border: 1px solid lightgray;
   width: 100%;
   background-color: #eee;
+  margin: 0.5em;
 }

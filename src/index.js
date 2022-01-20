@@ -1,6 +1,6 @@
 const start = document.getElementById("start");
 const stop = document.getElementById("stop");
-const video = document.querySelector("video");
+const video = document.querySelector("#completevideo");
 let recorder, stream;
 let options = { mimeType: "video/webm;codecs=vp9,opus" };
 
@@ -9,6 +9,7 @@ async function startRecording() {
     video: { mediaSource: "screen" }
   });
   recorder = new MediaRecorder(stream, options);
+  console.log(recorder);
 
   const chunks = [];
   recorder.ondataavailable = (e) => chunks.push(e.data);
