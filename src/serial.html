@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Screen Recording</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button id="iniciar">iniciar</button>
+    <script>
+      const button = document.querySelector("#iniciar");
+      button.addEventListener("click", async (evt) => {
+        const porta = await navigator.serial.requestPort();
+
+        porta.onconnect = (...args) => {
+          console.log("conexao", args);
+        };
+
+        porta.ondisconnect = (...args) => {
+          console.log("desconexao", args);
+        };
+
+        await porta.open({
+          baudRate: 19200
+        });
+
+        console.log(porta);
+        console.log(porta.getInfo());
+
+        //let reader = await porta.readable.getReader();
+        //console.log(reader.read());
+      });
+    </script>
+  </body>
+</html>
