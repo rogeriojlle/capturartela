@@ -5,6 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      #videos {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+    </style>
   </head>
 
   <body>
@@ -16,15 +23,13 @@
         Parar
       </button>
     </div>
-    <div
-      style="
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      "
-    >
-      <div><video autoplay controls id="livevideo"></video></div>
-      <div><video autoplay controls id="completevideo"></video></div>
+    <div id="videos">
+      <div>
+        <video autoplay controls id="livevideo"></video>
+      </div>
+      <div>
+        <video autoplay controls id="completevideo"></video>
+      </div>
     </div>
     <script>
       const start = document.getElementById('start');
@@ -64,6 +69,8 @@
 
         recorder.stop();
         stream.getVideoTracks()[0].stop();
+        alert(`aguarde o processamento do video na segunda janela
+e use a opção de baixar disponível nos controles dela`);
       });
     </script>
   </body>
