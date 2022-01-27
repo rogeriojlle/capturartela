@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
-    <title>Screen Recording</title>
+    <title>Gravar tela</title>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -15,9 +16,15 @@
         Parar
       </button>
     </div>
-    <div style="display: inline-flex;">
-      <video autoplay id="livevideo"></video>
-      <video autoplay id="completevideo"></video>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      "
+    >
+      <div><video autoplay id="livevideo"></video></div>
+      <div><video autoplay id="completevideo"></video></div>
     </div>
     <script>
       const start = document.getElementById('start');
