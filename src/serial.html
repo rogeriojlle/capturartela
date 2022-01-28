@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Screen Recording</title>
+    <title>Serial</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <button id="iniciar">iniciar</button>
+    <hr />
+    <a href="/">voltar</a>
     <script>
       const button = document.querySelector('#iniciar');
       const encoder = new TextEncoder();
@@ -27,13 +29,13 @@
         });
 
         console.log(porta);
-        console.log(porta.getInfo());
 
         let reader = await porta.readable.getReader();
         let writer = await porta.writable.getWriter();
-        console.log(reader, writer);
+        console.log({ reader, writer });
 
-        console.log(writer.write(encoder.encode('chicabom')));
+        console.log(await reader.read());
+        writer.write(encoder.encode('chicabom', { stream: true }));
       });
     </script>
   </body>

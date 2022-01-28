@@ -1,3 +1,7 @@
+body {
+  font-family: sans-serif;
+}
+
 button {
   display: inline-block;
   margin: 1em 1em;
