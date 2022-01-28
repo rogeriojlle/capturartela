@@ -39,6 +39,10 @@
       let recorder, stream;
       let options = { mimeType: 'video/webm;codecs=vp9,opus' };
 
+      liveVideo.addEventListener('onreadystatechange', (evt) => {
+        console.log('onreadystatechange', evt);
+      });
+
       async function startRecording() {
         stream = await navigator.mediaDevices.getDisplayMedia();
         recorder = new MediaRecorder(stream, options);

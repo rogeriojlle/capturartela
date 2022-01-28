@@ -8,16 +8,18 @@
   <body>
     <button id="iniciar">iniciar</button>
     <script>
-      const button = document.querySelector("#iniciar");
-      button.addEventListener("click", async (evt) => {
+      const button = document.querySelector('#iniciar');
+      const encoder = new TextEncoder();
+
+      button.addEventListener('click', async (evt) => {
         const porta = await navigator.serial.requestPort();
 
         porta.onconnect = (...args) => {
-          console.log("conexao", args);
+          console.log('conexao', args);
         };
 
         porta.ondisconnect = (...args) => {
-          console.log("desconexao", args);
+          console.log('desconexao', args);
         };
 
         await porta.open({
@@ -27,8 +29,11 @@
         console.log(porta);
         console.log(porta.getInfo());
 
-        //let reader = await porta.readable.getReader();
-        //console.log(reader.read());
+        let reader = await porta.readable.getReader();
+        let writer = await porta.writable.getWriter();
+        console.log(reader, writer);
+
+        console.log(writer.write(encoder.encode('chicabom')));
       });
     </script>
   </body>
