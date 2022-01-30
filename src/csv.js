@@ -13,7 +13,6 @@ const ler = async (evt) => {
     trim: true,
     cast: true
   });
-  const c = cidasc.files[0];
   const reader = cidasc.files[0].stream().getReader();
 
   parser.on('readable', () => {
