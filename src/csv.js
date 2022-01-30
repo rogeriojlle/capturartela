@@ -5,32 +5,29 @@ const iniciar = document.querySelector('#iniciar');
 
 const ler = async (evt) => {
   evt.preventDefault();
-  //const reader = new FileReader();
-  const decoder = new TextDecoder();
 
+  const decoder = new TextDecoder();
+  const reader = cidasc.files[0].stream().getReader();
   const parser = parse({
     columns: true,
     trim: true,
     cast: true
-  });
-  const reader = cidasc.files[0].stream().getReader();
-
-  parser.on('readable', () => {
+  }).on('readable', () => {
     let record;
     while ((record = parser.read()) !== null) {
       console.log(record);
     }
   });
 
-  const loop = async (r) => {
-    const { value, done } = await r.read();
+  const loop = async () => {
+    const { value, done } = await reader.read();
     if (!done) {
-      loop(r);
+      loop();
       parser.write(decoder.decode(value));
     }
   };
 
-  loop(reader);
+  loop();
 };
 
 iniciar.addEventListener('click', ler);
