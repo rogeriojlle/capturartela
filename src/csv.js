@@ -1,21 +1,34 @@
-const { generate, parse, stringify, transform } = require('csv');
-
-console.log({ generate, parse, stringify, transform });
+import { parse } from 'csv-parse/dist/esm';
 
 const cidasc = document.querySelector('#cidasc');
-
 const iniciar = document.querySelector('#iniciar');
 
-const ler = (evt) => {
+const ler = async (evt) => {
   evt.preventDefault();
-  const reader = new FileReader();
+  //const reader = new FileReader();
 
-  reader.onloadend = (...args) => {
-    console.log(args);
+  const parser = parse({
+    encoding: 'binary'
+  });
+  const reader = cidasc.files[0].stream().getReader();
+  console.log(parser, reader);
+
+  parser.on('readable', () => {
+    let record;
+    while ((record = parser.read()) !== null) {
+      console.log(record);
+    }
+  });
+
+  const loop = async (r) => {
+    const { value, done } = await r.read();
+    if (!done) {
+      parser.push(value);
+      await loop(r);
+    }
   };
 
-  console.log(cidasc.files[0]);
-
-  //console.log(reader.readAsText(cidasc.files[0]));
+  loop(reader);
 };
+
 iniciar.addEventListener('click', ler);
