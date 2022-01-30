@@ -10,14 +10,11 @@ const ler = async (evt) => {
 
   const parser = parse({
     columns: true,
-    quote: '"',
-    ltrim: true,
-    rtrim: true,
-    delimiter: ','
+    trim: true,
+    cast: true
   });
   const c = cidasc.files[0];
   const reader = cidasc.files[0].stream().getReader();
-  console.log(parser, reader);
 
   parser.on('readable', () => {
     let record;
