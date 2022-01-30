@@ -6,10 +6,16 @@ const iniciar = document.querySelector('#iniciar');
 const ler = async (evt) => {
   evt.preventDefault();
   //const reader = new FileReader();
+  const decoder = new TextDecoder();
 
   const parser = parse({
-    encoding: 'binary'
+    columns: true,
+    quote: '"',
+    ltrim: true,
+    rtrim: true,
+    delimiter: ','
   });
+  const c = cidasc.files[0];
   const reader = cidasc.files[0].stream().getReader();
   console.log(parser, reader);
 
@@ -23,8 +29,8 @@ const ler = async (evt) => {
   const loop = async (r) => {
     const { value, done } = await r.read();
     if (!done) {
-      parser.push(value);
-      await loop(r);
+      loop(r);
+      parser.write(decoder.decode(value));
     }
   };
 
