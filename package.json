@@ -1,18 +1,17 @@
 {
   "name": "vanilla",
-  "version": "1.0.0",
-  "description": "JavaScript example starter project",
-  "main": "src/index.html",
+  "version": "0.0.1",
+  "source": "src/index.html",
   "scripts": {
-    "start": "parcel src/index.html --open",
-    "build": "parcel build src/index.html"
+    "start": "parcel ",
+    "build": "parcel build"
   },
   "dependencies": {
     "csv": "6.0.5",
     "csv-parse": "^5.0.4"
   },
   "devDependencies": {
-    "parcel": "^2.0.0"
+    "parcel": "latest"
   },
   "browserslist": ["> 0.5%, not IE 11"]
 }
