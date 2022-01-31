@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel ",
+    "start": "--port 3000",
     "build": "parcel build"
   },
   "dependencies": {
