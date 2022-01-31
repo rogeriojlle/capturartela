@@ -9,7 +9,7 @@ const ler = async (evt) => {
   const decoder = new TextDecoder();
 
   const parser = parse({
-    columns: true,
+    columns: false,
     trim: true,
     cast: true
   });
