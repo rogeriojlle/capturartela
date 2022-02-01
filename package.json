@@ -1,21 +1,17 @@
 {
   "name": "vanilla",
-  "version": "1.0.0",
-  "description": "JavaScript example starter project",
-  "main": "index.html",
+  "version": "0.0.1",
+  "source": "src/index.html",
   "scripts": {
-    "start": "parcel index.html --https --open",
-    "build": "parcel build index.html"
+    "start": "parcel --port 3000",
+    "build": "parcel build"
   },
   "dependencies": {
     "csv": "6.0.5",
     "csv-parse": "^5.0.4"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
-    "parcel-bundler": "^1.6.1"
+    "parcel": "latest"
   },
-  "browserslist": [
-    "> 0.5%, not IE 11"
-  ]
+  "browserslist": ["> 0.5%, not IE 11"]
 }
