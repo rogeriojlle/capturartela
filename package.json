@@ -1,10 +1,10 @@
 {
   "name": "vanilla",
   "version": "0.0.1",
-  "source": "src/index.html",
+  "main": "index.html",
   "scripts": {
-    "start": "parcel --port 3000",
-    "build": "parcel build"
+    "start": "parcel serve index.html --port 1234",
+    "build": "parcel build index.html"
   },
   "dependencies": {
     "csv": "6.0.5",
@@ -13,5 +13,7 @@
   "devDependencies": {
     "parcel": "latest"
   },
-  "browserslist": ["> 0.5%, not IE 11"]
+  "browserslist": [
+    "> 0.5%, not IE 11"
+  ]
 }

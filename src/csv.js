@@ -22,8 +22,8 @@ const ler = async (evt) => {
   const loop = async () => {
     const { value, done } = await reader.read();
     if (!done) {
-      loop();
       parser.write(decoder.decode(value));
+      loop();
     }
   };
 
