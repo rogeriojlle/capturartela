@@ -21,11 +21,10 @@ const ler = async (evt) => {
 
   while(true){
     const { value, done } = await reader.read();
-    if (!done) {
-      parser.write(decoder.decode(value));
-    } else {
+    if (done) {
       break
     }
+    parser.write(decoder.decode(value));
   }
 };
 
