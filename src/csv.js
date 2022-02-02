@@ -19,15 +19,14 @@ const ler = async (evt) => {
     }
   });
 
-  const loop = async () => {
+  while(true){
     const { value, done } = await reader.read();
     if (!done) {
       parser.write(decoder.decode(value));
-      loop();
+    } else {
+      break
     }
-  };
-
-  loop();
+  }
 };
 
 iniciar.addEventListener('click', ler);
