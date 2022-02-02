@@ -1,17 +1,17 @@
 {
   "name": "vanilla",
   "version": "0.0.1",
-  "main": "index.html",
   "scripts": {
     "start": "parcel serve index.html --port 1234",
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "csv": "6.0.5",
-    "csv-parse": "^5.0.4"
+    "csv": "^6.0.5",
+    "csv-parse": "^5.0.4",
+    "xlsx": "^0.18.0"
   },
   "devDependencies": {
-    "parcel": "latest"
+    "parcel": "^2.0.0"
   },
   "browserslist": [
     "> 0.5%, not IE 11"
